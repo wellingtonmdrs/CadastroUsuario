@@ -1,0 +1,5 @@
+package br.com.cadastrousuario.repository.entity;
+
+public class ContatoEntity {
+
+}
