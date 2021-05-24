@@ -15,7 +15,22 @@ public class PessoaModel {
 	private String  cep;
 	private String  cidade;
 	private String  estado;
+	private ContatoModel  contatoModel;
+	private UsuarioModel  usuarioModel;
 	
+	
+	public ContatoModel getContatoModel() {
+		return contatoModel;
+	}
+	public void setContatoModel(ContatoModel contatoModel) {
+		this.contatoModel = contatoModel;
+	}
+	public UsuarioModel getUsuarioModel() {
+		return usuarioModel;
+	}
+	public void setUsuarioModel(UsuarioModel usuarioModel) {
+		this.usuarioModel = usuarioModel;
+	}
 	public Integer getCodigo() {
 		return codigo;
 	}

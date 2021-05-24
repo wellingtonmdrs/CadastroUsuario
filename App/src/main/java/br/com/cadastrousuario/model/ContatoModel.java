@@ -7,7 +7,6 @@ public class ContatoModel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String codigo;
-	private PessoaModel pessoaModel;
 	private String ddd;
 	private String telefone;
 	private String tipo;
@@ -16,12 +15,6 @@ public class ContatoModel implements Serializable {
 	}
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
-	}
-	public PessoaModel getPessoaModel() {
-		return pessoaModel;
-	}
-	public void setPessoaModel(PessoaModel pessoaModel) {
-		this.pessoaModel = pessoaModel;
 	}
 	public String getDdd() {
 		return ddd;

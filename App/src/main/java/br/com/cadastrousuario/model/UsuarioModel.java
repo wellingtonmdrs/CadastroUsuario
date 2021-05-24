@@ -9,10 +9,10 @@ public class UsuarioModel implements Serializable {
 	private String codigo;
 	private String usuario;
 	private String senha;
-
+	private String confirmarSenha;
+	
 	private PessoaModel pessoaModel;
 	
-
 	public PessoaModel getPessoaModel() {
 		return pessoaModel;
 	}
@@ -43,6 +43,14 @@ public class UsuarioModel implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getConfirmarSenha() {
+		return confirmarSenha;
+	}
+
+	public void setConfirmarSenha(String confirmarSenha) {
+		this.confirmarSenha = confirmarSenha;
 	}
 
 }

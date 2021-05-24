@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="import javax.persistence.JoinColumn;"/>
 			<item value="ciceroednilson"/>
 			<item value="locked"/>
 			<item value="locker"/>
