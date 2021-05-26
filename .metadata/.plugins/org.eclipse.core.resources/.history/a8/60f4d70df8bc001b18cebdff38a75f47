@@ -1,0 +1,7 @@
+package br.com.cadastrousuario.uteis;
+
+public enum EnumTipoContato {
+	
+	Celular("Celular"), Residencia("Residencia");
+
+}

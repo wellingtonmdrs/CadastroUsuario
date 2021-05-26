@@ -6,13 +6,19 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
  
  
 @Entity
 @Table(name="tb_pessoa")
-@NamedQuery(name = "PessoaEntity.findCpf", query = "SELECT u FROM PessoaEntity u WHERE u.cpf = :cpf")
+
+@NamedQueries({
+	@NamedQuery(name = "PessoaEntity.findAll",query= "SELECT p FROM PessoaEntity p"),
+	@NamedQuery(name = "PessoaEntity.findCpf", query = "SELECT u FROM PessoaEntity u WHERE u.cpf = :cpf")
+})
+
 public class PessoaEntity {
  
 	@Id

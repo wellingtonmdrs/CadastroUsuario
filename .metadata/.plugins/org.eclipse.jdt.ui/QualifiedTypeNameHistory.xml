@@ -3,12 +3,19 @@
     <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
     <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
-    <fullyQualifiedTypeName name="br.com.cadastrousuario.repository.entity.ContatoEntity"/>
-    <fullyQualifiedTypeName name="br.com.cadastrousuario.model.ContatoModel"/>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
     <fullyQualifiedTypeName name="java.lang.Boolean"/>
-    <fullyQualifiedTypeName name="br.com.cadastrousuario.repository.UsuarioRepository"/>
     <fullyQualifiedTypeName name="br.com.cadastrousuario.repository.entity.UsuarioEntity"/>
     <fullyQualifiedTypeName name="br.com.cadastrousuario.repository.entity.PessoaEntity"/>
     <fullyQualifiedTypeName name="br.com.cadastrousuario.uteis.ValidaCPF"/>
+    <fullyQualifiedTypeName name="javax.persistence.NamedQueries"/>
+    <fullyQualifiedTypeName name="br.com.cadastrousuario.model.ContatoModel"/>
+    <fullyQualifiedTypeName name="br.com.cadastrousuario.repository.entity.ContatoEntity"/>
+    <fullyQualifiedTypeName name="antlr.collections.List"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="br.com.cadastrousuario.repository.ContatoRepository"/>
+    <fullyQualifiedTypeName name="br.com.cadastrousuario.repository.UsuarioRepository"/>
+    <fullyQualifiedTypeName name="java.util.Collection"/>
+    <fullyQualifiedTypeName name="br.com.cadastrousuario.uteis.EnumTipoContato"/>
 </qualifiedTypeNameHistroy>

@@ -7,13 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "tb_usuario")
 @Entity
-@NamedQuery(name = "UsuarioEntity.findUser", query = "SELECT u FROM UsuarioEntity u WHERE u.usuario = :usuario AND u.senha = :senha")
+@NamedQueries({
+	@NamedQuery(name = "UsuarioEntity.findUser", query = "SELECT u FROM UsuarioEntity u WHERE u.usuario = :usuario AND u.senha = :senha"),
+	@NamedQuery(name = "UsuarioEntity.findUsuario", query = "SELECT u FROM UsuarioEntity u WHERE u.pessoaEntity.codigo = :codigo")
+})
 public class UsuarioEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,7 +25,7 @@ public class UsuarioEntity implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "id_usuario")
-	private String codigo;
+	private Integer codigo;
 	
 	@OneToOne
 	@JoinColumn(name="id_pessoa")
@@ -41,11 +45,11 @@ public class UsuarioEntity implements Serializable {
 	@Column(name = "ds_senha")
 	private String senha;
 
-	public String getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 

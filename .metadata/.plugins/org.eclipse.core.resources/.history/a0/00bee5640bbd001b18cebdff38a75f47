@@ -1,0 +1,91 @@
+package br.com.cadastrousuario.repository;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.com.cadastrousuario.model.ContatoModel;
+import br.com.cadastrousuario.model.UsuarioModel;
+import br.com.cadastrousuario.repository.entity.ContatoEntity;
+import br.com.cadastrousuario.repository.entity.PessoaEntity;
+import br.com.cadastrousuario.repository.entity.UsuarioEntity;
+import br.com.cadastrousuario.uteis.EnumTipoContato;
+import br.com.cadastrousuario.uteis.Uteis;
+
+public class ContatoRepository implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	ContatoEntity contatoEntity;
+	EntityManager entityManager;
+	EntityManager entityManager2;
+
+	@SuppressWarnings("unchecked")
+	public Collection<ContatoEntity> ConsultarContato(ContatoModel contatoModel) {
+
+		try {
+
+			// QUERY QUE VAI SER EXECUTADA (ContatoEntity.findContato)
+			Query query = Uteis.JpaEntityManager().createNamedQuery("ContatoEntity.findContato");
+
+			// PARÂMETROS DA QUERY
+			query.setParameter("codigo", contatoModel.getPessoaModel().getCodigo());
+
+			// RETORNA O USUÁRIO SE FOR LOCALIZADO
+			return query.getResultList();
+
+		} catch (Exception e) {
+
+			return null;
+		}
+
+	}
+	
+	
+	public void SalvarNovoRegistro(List <ContatoModel> contatoModelList,PessoaEntity pessoaEntity){
+		 
+		entityManager =  Uteis.JpaEntityManager();
+		entityManager2 =  Uteis.JpaEntityManager();
+		
+		contatoEntity = new ContatoEntity();
+
+		contatoEntity.setPessoaEntity(pessoaEntity);
+
+		for (ContatoModel contatoModel2 : contatoModelList) {
+			
+			if (contatoEntity.getTipo().equals(EnumTipoContato.Celular.getDescricao())) {
+				
+				contatoEntity.getPessoaEntity().setCodigo(pessoaEntity.getCodigo());
+				contatoEntity.setDdd(contatoModel2.getDdd());
+				contatoEntity.setTelefone(contatoModel2.getTelefone());
+				contatoEntity.setTipo(contatoModel2.getTipo());
+//		PessoaEntity pessoaEntity = entityManager.find(PessoaEntity.class, usuarioModel.getPessoaModel().getCodigo()); 
+				//usuarioEntity.setPessoaEntity(pessoaEntity);
+				
+				entityManager.persist(contatoEntity);
+			}
+			else 	
+				if (contatoEntity.getTipo().equals(EnumTipoContato.Residencia.getDescricao())) {
+					
+					contatoEntity.getPessoaEntity().setCodigo(pessoaEntity.getCodigo());
+					contatoEntity.setDdd(contatoModel2.getDdd());
+					contatoEntity.setTelefone(contatoModel2.getTelefone());
+					contatoEntity.setTipo(contatoModel2.getTipo());
+//			PessoaEntity pessoaEntity = entityManager.find(PessoaEntity.class, usuarioModel.getPessoaModel().getCodigo()); 
+					//usuarioEntity.setPessoaEntity(pessoaEntity);
+					
+					entityManager2.persist(contatoEntity);
+				}
+			
+			
+		}
+	}
+
+	
+	
+}

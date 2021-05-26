@@ -1,6 +1,7 @@
 package br.com.cadastrousuario.model;
  
 import java.time.LocalDateTime;
+import java.util.List;
  
 public class PessoaModel {
  
@@ -15,17 +16,31 @@ public class PessoaModel {
 	private String  cep;
 	private String  cidade;
 	private String  estado;
-	private ContatoModel  contatoModel;
-	private UsuarioModel  usuarioModel;
+	private List<ContatoModel>  contatoModel;
+	private String numCelular;
+	private String numResidencia;
 	
-	
-	public ContatoModel getContatoModel() {
+	public String getNumCelular() {
+		return numCelular;
+	}
+	public void setNumCelular(String numCelular) {
+		this.numCelular = numCelular;
+	}
+	public String getNumResidencia() {
+		return numResidencia;
+	}
+	public void setNumResidencia(String numResidencia) {
+		this.numResidencia = numResidencia;
+	}
+	public List<ContatoModel> getContatoModel() {
 		return contatoModel;
 	}
-	public void setContatoModel(ContatoModel contatoModel) {
+	public void setContatoModel(List<ContatoModel> contatoModel) {
 		this.contatoModel = contatoModel;
 	}
-	public UsuarioModel getUsuarioModel() {
+	private UsuarioModel  usuarioModel;
+	
+			public UsuarioModel getUsuarioModel() {
 		return usuarioModel;
 	}
 	public void setUsuarioModel(UsuarioModel usuarioModel) {

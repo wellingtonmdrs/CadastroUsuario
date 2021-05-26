@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Table(name = "tb_contato")
 @Entity
-@NamedQuery(name = "ContatoEntity.findContato", query = "SELECT u FROM ContatoEntity u, PessoaEntity p WHERE p.codigo = :codigoPessoa")
+@NamedQuery(name = "ContatoEntity.findContato", query = "SELECT u FROM ContatoEntity u WHERE u.pessoaEntity.codigo = :codigo")
 public class ContatoEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,7 +21,7 @@ public class ContatoEntity implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "id_contato")
-	private String codigo;
+	private Integer codigo;
 	
 	@ManyToOne
 	@JoinColumn(name="id_pessoa")
@@ -29,7 +29,7 @@ public class ContatoEntity implements Serializable {
 	
 
 	@Column(name = "nu_ddd")
-	private String ddd;
+	private Integer ddd;
 
 	@Column(name = "nu_telefone")
 	private String telefone;
@@ -45,19 +45,19 @@ public class ContatoEntity implements Serializable {
 		this.pessoaEntity = pessoaEntity;
 	}
 
-	public String getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 
-	public String getDdd() {
+	public Integer getDdd() {
 		return ddd;
 	}
 
-	public void setDdd(String ddd) {
+	public void setDdd(Integer ddd) {
 		this.ddd = ddd;
 	}
 

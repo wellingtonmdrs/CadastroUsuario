@@ -1,5 +1,3 @@
-DROP DATABASE db_cadastro_usuario;
-
 CREATE DATABASE db_cadastro_usuario;
 
 CREATE TABLE tb_pessoa(
@@ -42,7 +40,7 @@ CREATE TABLE tb_usuario(
  ALTER TABLE tb_contato ADD FOREIGN KEY (id_pessoa) REFERENCES tb_pessoa(id_pessoa);
  
 INSERT INTO tb_pessoa (nm_pessoa,nu_cpf,fl_sexo,dt_cadastro,ds_email,ds_endereco,ds_bairro,ds_cep,ds_cidade,ds_estado)
-VALUES('teste teste','191.000.000-00','M',NOW(),'teste@teste.com','rua teste nº007','bairro teste','765-138','cidade teste','PE');
+VALUES('teste teste','191.000.000-00','M',NOW(),'teste@teste.com','rua teste nº007','bairro teste','54765-138','cidade teste','PE');
 
 INSERT INTO tb_contato (id_pessoa,nu_ddd,nu_telefone,nu_tipo)
 VALUES('1','81','98765-4321','celular');

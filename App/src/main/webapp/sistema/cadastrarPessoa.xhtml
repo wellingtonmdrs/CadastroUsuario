@@ -35,8 +35,7 @@
 						<p:outputLabel value="CPF" for="inputText-cpf" />
 						<p:inputMask id="inputText-cpf" style="width:300px"
 							disabled="#{cadastrarPessoaController.bloquearCampos}"
-							mask="999.999.999-99"
-							maxlength="15"
+							mask="999.999.999-99" maxlength="15"
 							value="#{cadastrarPessoaController.pessoaModel.cpf}"
 							required="true"
 							requiredMessage="O CPF é de preenchimento obrigatório" />
@@ -58,29 +57,31 @@
 							disabled="#{cadastrarPessoaController.bloquearCampos}"
 							maxlength="80"
 							value="#{cadastrarPessoaController.pessoaModel.email}"
-							required="true"
-						validatorMessage="O email informado não é válido"
-							requiredMessage="O email é de preenchimento obrigatório" >
-							<f:validateRegex
-								pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
+							required="true" validatorMessage="O email informado não é válido"
+							requiredMessage="O email é de preenchimento obrigatório">
+							<f:validateRegex pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
 						</p:inputText>
-						
-						<!--  
-						<p:outputLabel value="DDD Celular" for="inputText-ddd" />
-						<p:inputText id="inputText-ddd" style="width:300px" maxlength="2"
-							value=""
-							required="true"
-							requiredMessage="O DDD é de preenchimento obrigatório" />
 
-						<p:outputLabel value="Celular" for="inputText-celular" />
-						<p:inputText id="inputText-celular" style="width:300px"
-							maxlength="10"
-							value=""
+
+						<p:outputLabel value="Tel. Celular" for="inputText-celular" />
+						<p:inputMask id="inputText-celular" style="width:300px"
+							disabled="#{cadastrarPessoaController.bloquearCampos}"
+							maxlength="15" mask="(99) 99999-9999"
+							value="#{cadastrarPessoaController.pessoaModel.numCelular}"
 							required="true"
-							requiredMessage="O Celular é de preenchimento obrigatório" />
--->
+							requiredMessage="O Número do Tel. Celular é de preenchimento obrigatório" />
+
+						<p:outputLabel value="Tel. Residencial"
+							for="inputText-residencial" />
+						<p:inputMask id="inputText-residencial" style="width:300px"
+							disabled="#{cadastrarPessoaController.bloquearCampos}"
+							maxlength="14" mask="(99) 9999-9999"
+							value="#{cadastrarPessoaController.pessoaModel.numResidencia}"
+							required="true"
+							requiredMessage="O Número do Tel. Residencial é de preenchimento obrigatório" />
+
 						<p:outputLabel value="Endereço" for="inputText-endereco" />
-						<p:inputText id="inputText-endereco" style="width:400px"
+						<p:inputText id="inputText-endereco" style="width:300px"
 							disabled="#{cadastrarPessoaController.bloquearCampos}"
 							maxlength="200"
 							value="#{cadastrarPessoaController.pessoaModel.endereco}"
@@ -100,8 +101,7 @@
 						<p:outputLabel value="CEP" for="inputText-cep" />
 						<p:inputMask id="inputText-cep" style="width:300px"
 							disabled="#{cadastrarPessoaController.bloquearCampos}"
-							mask="99999-999"
-							maxlength="10"
+							mask="99999-999" maxlength="10"
 							value="#{cadastrarPessoaController.pessoaModel.cep}"
 							required="true"
 							requiredMessage="O CEP é de preenchimento obrigatório" />
@@ -145,7 +145,7 @@
 							maxlength="30"
 							value="#{usuarioController.usuarioModel.confirmarSenha}"
 							required="true"
-							requiredMessage="A Senha é de preenchimento obrigatório" />
+							requiredMessage="O Confirmar Senha é de preenchimento obrigatório" />
 
 					</h:panelGrid>
 
@@ -160,6 +160,7 @@
 					<p:commandButton value="Salvar" id="commandButton-salvar-dados"
 						readonly="#{cadastrarPessoaController.bloquearCampos}"
 						icon="ui-icon-gear"
+						onclick="submitDisable(this)"
 						actionListener="#{cadastrarPessoaController.SalvarNovaPessoa}"
 						update="panelGrid-campos-form">
 					</p:commandButton>

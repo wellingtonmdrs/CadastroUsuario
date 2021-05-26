@@ -1,0 +1,140 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form>
+
+		<h:panelGrid id="panelGrid-campos-form" columns="2" cellpadding="10">
+
+			<p:outputLabel value="Código" for="inputText-nome" />
+			<p:inputText id="inputText-codigo"
+				value="#{consultarPessoaController.pessoaModel.codigo}"
+				style="width:50px" readonly="true" />
+
+
+			<p:outputLabel value="Nome" for="inputText-nome" />
+			<p:inputText id="inputText-nome" style="width:300px" maxlength="70"
+				value="#{consultarPessoaController.pessoaModel.nome}"
+				required="true"
+				requiredMessage="O nome é de preenchimento obrigatório" />
+
+			<p:outputLabel value="CPF" for="inputText-cpf" />
+			<p:inputMask id="inputText-cpf" style="width:300px"
+				disabled="#{cadastrarPessoaController.bloquearCampos}"
+				mask="999.999.999-99" maxlength="15"
+				value="#{cadastrarPessoaController.pessoaModel.cpf}" required="true"
+				requiredMessage="O CPF é de preenchimento obrigatório" />
+
+			<p:outputLabel for="selectOneRadio-sexo" value="Sexo:" />
+			<p:selectOneRadio id="selectOneRadio-sexo"
+				value="#{consultarPessoaController.pessoaModel.sexo}"
+				required="true"
+				requiredMessage="O sexo é de preenchimento obrigatório">
+
+				<f:selectItem itemLabel="Masculino" itemValue="M" />
+				<f:selectItem itemLabel="Feminino" itemValue="F" />
+			</p:selectOneRadio>
+
+			<p:outputLabel value="E-mail" for="inputText-email" />
+			<p:inputText id="inputText-email" style="width:300px" maxlength="80"
+				value="#{consultarPessoaController.pessoaModel.email}"
+				required="true"
+				requiredMessage="O email é de preenchimento obrigatório" />
+
+
+			<p:outputLabel value="E-mail" for="inputText-email" />
+						<p:inputText id="inputText-email" style="width:300px"
+							disabled="#{cadastrarPessoaController.bloquearCampos}"
+							maxlength="80"
+							value="#{cadastrarPessoaController.pessoaModel.email}"
+							required="true"
+						validatorMessage="O email informado não é válido"
+							requiredMessage="O email é de preenchimento obrigatório" >
+							<f:validateRegex
+								pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
+						</p:inputText>
+						
+						<p:outputLabel value="Tel. Celular" for="inputText-celular" />
+						<p:inputMask id="inputText-celular" style="width:300px"
+							disabled="#{cadastrarPessoaController.bloquearCampos}"
+							maxlength="15"
+							mask="(99) 99999-9999"
+							value="#{cadastrarPessoaController.pessoaModel.numCelular}"
+							required="true"
+							requiredMessage="O Número do Tel. Celular é de preenchimento obrigatório" />
+
+						<p:outputLabel value="Tel. Residencial" for="inputText-residencial" />
+						<p:inputMask id="inputText-residencial" style="width:300px"
+							disabled="#{cadastrarPessoaController.bloquearCampos}"
+							maxlength="14"
+							mask="(99) 9999-9999"
+							value="#{cadastrarPessoaController.pessoaModel.numResidencia}"
+							required="true"
+							requiredMessage="O Número do Tel. Residencial é de preenchimento obrigatório" />
+
+						<p:outputLabel value="Endereço" for="inputText-endereco" />
+						<p:inputText id="inputText-endereco" style="width:400px"
+							disabled="#{cadastrarPessoaController.bloquearCampos}"
+							maxlength="200"
+							value="#{cadastrarPessoaController.pessoaModel.endereco}"
+							required="true"
+							requiredMessage="O endereço é de preenchimento obrigatório" />
+
+
+						<p:outputLabel value="Bairro" for="inputText-bairro" />
+						<p:inputText id="inputText-bairro" style="width:300px"
+							disabled="#{cadastrarPessoaController.bloquearCampos}"
+							maxlength="100"
+							value="#{cadastrarPessoaController.pessoaModel.bairro}"
+							required="true"
+							requiredMessage="O bairro é de preenchimento obrigatório" />
+
+
+						<p:outputLabel value="CEP" for="inputText-cep" />
+						<p:inputMask id="inputText-cep" style="width:300px"
+							disabled="#{cadastrarPessoaController.bloquearCampos}"
+							mask="99999-999"
+							maxlength="10"
+							value="#{cadastrarPessoaController.pessoaModel.cep}"
+							required="true"
+							requiredMessage="O CEP é de preenchimento obrigatório" />
+
+
+						<p:outputLabel value="Cidade" for="inputText-cidade" />
+						<p:inputText id="inputText-cidade" style="width:300px"
+							disabled="#{cadastrarPessoaController.bloquearCampos}"
+							maxlength="100"
+							value="#{cadastrarPessoaController.pessoaModel.cidade}"
+							required="true"
+							requiredMessage="A cidade é de preenchimento obrigatório" />
+
+
+						<p:outputLabel value="Estado" for="inputText-estado" />
+						<p:inputText id="inputText-estado" style="width:300px"
+							disabled="#{cadastrarPessoaController.bloquearCampos}"
+							maxlength="2"
+							value="#{cadastrarPessoaController.pessoaModel.estado}"
+							required="true"
+							requiredMessage="O estado é de preenchimento obrigatório" />
+						
+						
+
+			<p:spacer />
+			<p:commandButton value="Alterar" id="commandButton-alterar"
+				icon="ui-icon-gear"
+				actionListener="#{consultarPessoaController.AlterarRegistro}"
+				oncomplete="PF('dialog-modal-editar').hide();"
+				update="form-consulta" />
+
+
+			<p:spacer />
+			<p:messages showDetail="false" autoUpdate="true" closable="true"
+				severity="error" />
+
+		</h:panelGrid>
+
+	</h:form>
+
+</ui:composition>

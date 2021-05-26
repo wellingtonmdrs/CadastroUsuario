@@ -55,11 +55,20 @@ public class CadastrarPessoaController {
 		if (ValidaCPF.isCPF(getPessoaModel().getCpf()) == true) {
 
 			if (pessoaRepository.ConsultarCpf(getPessoaModel()) == null) {
+				
+				if (pessoaModel.getUsuarioModel().getSenha().equals(pessoaModel.getUsuarioModel().getConfirmarSenha())) {
+					
+					pessoaRepository.SalvarNovoRegistro(this.pessoaModel);
+					
+					bloquearCampos = true;
+					Uteis.MensagemInfo("Registro cadastrado com sucesso");
+				}
+				else {
+					
+					Uteis.MensagemAtencao("As senhas informadas estão diferentes");
+					
+				}
 
-				pessoaRepository.SalvarNovoRegistro(this.pessoaModel);
-
-				bloquearCampos = true;
-				Uteis.MensagemInfo("Registro cadastrado com sucesso");
 			} else {
 
 				Uteis.MensagemAtencao("Usuário com o CPF informado já existe");
@@ -73,7 +82,14 @@ public class CadastrarPessoaController {
 			Uteis.MensagemAtencao("CPF informado não é válido");
 			
 		}
-
+		
+		pessoaModel.getUsuarioModel().setUsuario(null);
+		//this.usuarioController.getUsuarioModel().setUsuario(null);
+		
 	}
+	
+	
+	
+	
 
 }

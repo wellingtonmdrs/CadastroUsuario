@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import org.apache.commons.lang3.StringUtils;
 
+import br.com.cadastrousuario.model.PessoaModel;
 import br.com.cadastrousuario.model.UsuarioModel;
 import br.com.cadastrousuario.repository.UsuarioRepository;
 import br.com.cadastrousuario.repository.entity.UsuarioEntity;
@@ -38,7 +39,7 @@ public class UsuarioController implements Serializable {
 	}
 
 	public UsuarioModel GetUsuarioSession() {
-
+		
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 
 		return (UsuarioModel) facesContext.getExternalContext().getSessionMap().get("usuarioAutenticado");
@@ -82,6 +83,20 @@ public class UsuarioController implements Serializable {
 			}
 		}
 
+	}
+	
+	/***
+	 * EXCLUINDO UM REGISTRO
+	 * @param pessoaModel
+	 */
+	public void ExcluirPessoa(PessoaModel pessoaModel){
+ 
+		//EXCLUI A PESSOA DO BANCO DE DADOS
+		
+		
+		this.usuarioRepository.ExcluirRegistro(pessoaModel.getCodigo());
+ 
+ 
 	}
 
 }
